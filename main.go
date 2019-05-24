@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"text/template"
@@ -31,13 +32,13 @@ func process(content string) (string, error) {
 	return buf.String(), nil
 }
 
-func run(args []string) int {
+func run(stdout io.Writer, stderr io.Writer, args []string) int {
 	if len(args) < 2 || args[1] == "-h" || args[1] == "--help" {
-		fmt.Printf("Usage: %s FILE\n", args[0])
+		fmt.Fprintf(stdout, "Usage: %s FILE\n", args[0])
 		return 1
 	}
 	if args[1] == "-v" || args[1] == "--version" {
-		fmt.Println(Version())
+		fmt.Fprintln(stdout, Version())
 		return 0
 	}
 
@@ -46,26 +47,26 @@ func run(args []string) int {
 	var err error
 	if file == "-" {
 		if content, err = ioutil.ReadAll(os.Stdin); err != nil {
-			fmt.Fprintf(os.Stderr, "os.Stdin: %s\n", err)
+			fmt.Fprintf(stderr, "os.Stdin: %s\n", err)
 			return 1
 		}
 	} else {
 		if content, err = ioutil.ReadFile(file); err != nil {
-			fmt.Fprintln(os.Stderr, err)
+			fmt.Fprintln(stderr, err)
 			return 1
 		}
 	}
 
 	out, err := process(string(content))
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "process %s: %s\n", file, err)
+		fmt.Fprintf(stderr, "process %s: %s\n", file, err)
 		return 1
 	}
 
-	fmt.Print(out)
+	fmt.Fprint(stdout, out)
 	return 0
 }
 
 func main() {
-	os.Exit(run(os.Args))
+	os.Exit(run(os.Stdout, os.Stderr, os.Args))
 }
