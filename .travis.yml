@@ -1,0 +1,12 @@
+language: go
+go:
+  - 1.12.x
+env:
+  global:
+    - GO111MODULE=on
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: curl -fsSL https://git.io/goreleaser | bash
+    on:
+      tags: true
