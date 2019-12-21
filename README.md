@@ -1,4 +1,4 @@
-# gotmpl
+# gotmpl [![](https://github.com/skaji/gotmpl/workflows/test/badge.svg)](https://github.com/skaji/gotmpl/actions)
 
 A CLI for golang template.
 

@@ -1,14 +1,15 @@
 module github.com/skaji/gotmpl
 
-go 1.12
+go 1.13
 
 require (
 	github.com/Masterminds/goutils v1.1.0 // indirect
-	github.com/Masterminds/semver v1.4.2 // indirect
-	github.com/Masterminds/sprig v2.18.0+incompatible
+	github.com/Masterminds/semver v1.5.0 // indirect
+	github.com/Masterminds/sprig v2.22.0+incompatible
 	github.com/google/uuid v1.1.1 // indirect
-	github.com/huandu/xstrings v1.2.0 // indirect
-	github.com/imdario/mergo v0.3.7 // indirect
-	golang.org/x/crypto v0.0.0-20190513172903-22d7a77e9e5f // indirect
-	gopkg.in/yaml.v2 v2.2.2
+	github.com/huandu/xstrings v1.2.1 // indirect
+	github.com/imdario/mergo v0.3.8 // indirect
+	github.com/mitchellh/copystructure v1.0.0 // indirect
+	golang.org/x/crypto v0.0.0-20191219195013-becbf705a915 // indirect
+	gopkg.in/yaml.v2 v2.2.7
 )
