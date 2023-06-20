@@ -9,6 +9,7 @@ builds:
       - windows
     goarch:
       - amd64
+      - arm64
 checksum:
   name_template: 'gotmpl-checksums.txt'
 archives:
