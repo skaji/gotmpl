@@ -1,7 +1,5 @@
 builds:
-  - main: ./cmd/gotmpl
-    binary: gotmpl
-    env:
+  - env:
       - CGO_ENABLED=0
     goos:
       - linux

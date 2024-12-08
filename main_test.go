@@ -10,7 +10,7 @@ import (
 func TestBasic(t *testing.T) {
 	stdout := new(bytes.Buffer)
 
-	exit := run(stdout, os.Stderr, []string{"me", "../../example/text.txt"})
+	exit := run(stdout, os.Stderr, []string{"me", "example/text.txt"})
 	if exit != 0 {
 		t.Fatal("unexpected")
 	}
